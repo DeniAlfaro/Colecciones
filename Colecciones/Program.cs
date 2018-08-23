@@ -10,53 +10,27 @@ namespace Colecciones
     {
         static void Main(string[] args)
         {
-            Alumno alumno = new Alumno();
-            alumno.Nombre = "Juan Perez";
-            alumno.Matricula = "194536";
+            List<Alumno> alumnos = new List<Alumno>();
+            Alumno alumno1 = new Alumno();
 
-            Materia matematicas = new Materia();
-            matematicas.Nombre = "Matematicas";
-            matematicas.Identificador = "MT12358";
+            alumno1.Nombre = "Jose Perez";
+            alumno1.Materias.Add(new Materia("Historia", "HST741"));
+            alumno1.Materias.Add(new Materia("Matematicas", "MTM789"));
+            alumno1.Materias.Add(new Materia("Civismo", "CVS756"));
 
-            alumno.Materias.Add(new Materia());
-            alumno.Materias.Add(matematicas);
+            //los alumnos de arriba se agregaron a la lista ya que estaban guardados en una variable
+            alumnos.Add(alumno1);
 
-            alumno.Materias[0].Nombre = "Historia";
-            alumno.Materias[0].Identificador = "HT96465";
-
-            alumno.Materias.Add(new Materia());
-            alumno.Materias[2].Nombre = "Español";
-            alumno.Materias[2].Identificador = "ES852";
-
-            /*alumno.Materias.RemoveAt(1); // 3. eliminar una materia
-            alumno.Materias.RemoveAt(1); // se recorre al siguiente elemento y se borra
-            alumno.Materias.Clear(); // 4. eliminar todas las materias */
-
-            Console.WriteLine("Alumno: " + alumno.Nombre);
-
-            /*1.
-             * Console.WriteLine("Primera Materia: " + alumno.Materias[0].Nombre);
-            Console.WriteLine("Segunda Materia: " + alumno.Materias[1].Nombre); */
-
-            //hasta aqui AGREGAR
-
-            //2. sigue contar las materias y con el ciclo se van a mencionar también
-
-            Console.WriteLine("Numero de materias: " + alumno.Materias.Count);
-            /*2. 
-             * for(int i = 0; i < alumno.Materias.Count; i++)
+            foreach(Alumno elemento in alumnos)
             {
-                Console.WriteLine("Materia: " + alumno.Materias[i].Nombre);
-            }*/
-
-
-            //5.igual resultado que con el ciclo for
-            foreach(Materia materia in alumno.Materias)
-            {
-                Console.WriteLine("Materia: " + materia.Nombre);
+                Console.WriteLine("Nombre: " + elemento.Nombre);
+                foreach (Materia materia in elemento.Materias)
+                {
+                    Console.WriteLine("Materia: " + materia.Nombre);
+                }
             }
-
             Console.ReadLine();
+
         }
     }
 }
